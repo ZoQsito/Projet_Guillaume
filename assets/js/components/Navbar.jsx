@@ -3,6 +3,7 @@ import authAPI from '../services/authAPI';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import AuthContext from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
+import '../css/Navbar.css'
 
 const Navbar = ({history}) => {
 
@@ -15,10 +16,10 @@ const Navbar = ({history}) => {
       history.push("/login");
     };
 
-    return ( <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    return ( <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
       <NavLink className="navbar-brand" to="/">
-        Facturya
+        EPSI
       </NavLink>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
@@ -27,21 +28,23 @@ const Navbar = ({history}) => {
       <div className="collapse navbar-collapse" id="navbarColor02">
         <ul className="navbar-nav me-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/customers">Clients</NavLink>
+            <NavLink className="nav-link" to="/shop">Shop</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/invoices">Factures</NavLink>
+            <NavLink className="nav-link" to="/panier">Panier</NavLink>
           </li>
         </ul>
         <ul className="navbar-nav ml-auto">
           {!isAuthenticated &&( <><li className="nav-item"><NavLink to="/register" className="nav-link">Inscription</NavLink></li>
             <li className="nav-item">
                 <NavLink to="/login" className="btn btn-outline-success">Connexion</NavLink>
-            </li></>) || (<li className="nav-item">
+            </li></>) || (<>
+            <li id='profile-btn' className="nav-item"><NavLink to="/profil" className="nav-link">Profil</NavLink></li>
+            <li className="nav-item">
               <button onClick={handleLogout} className="btn btn-danger">
                 Déconnexion
               </button>
-            </li> )}
+            </li> </>)}
         </ul>
       </div>
     </div>
