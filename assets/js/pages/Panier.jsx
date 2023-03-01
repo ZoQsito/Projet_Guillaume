@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import '../../styles/panier.css'
 
 
 const Panier = (props) => {
@@ -16,7 +17,7 @@ const Panier = (props) => {
 
   return (
     <>
-      <div>
+      <div id="panier-container">
         <h1>Panier</h1>
         <table>
           <thead>
