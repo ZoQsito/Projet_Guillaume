@@ -11,10 +11,10 @@ const Profil_Page = () => {
 
   return (
     <div>
-      <img src={profileImageUrl} alt="Profile" />
-      <h1>{firstName} {lastName}</h1>
-      <p>Date de naissance : {birthDate}</p>
-      <p>Adresse : {adresse}</p>
+      <img id='img' src={profileImageUrl} alt="Profile" />
+      <h1 id='h1'>{firstName} {lastName}</h1>
+      <p id='p'>Date de naissance : {birthDate}</p>
+      <p id='p'>Adresse : {adresse}</p>
       <div className="buttons-container">
       <button className='buttons'>Historique<br/>Commandes</button>
       <button className='buttons'>Nous Contacter</button>

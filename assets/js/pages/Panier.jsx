@@ -1,50 +1,51 @@
-import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { toast } from "react-toastify";
-import TableLoader from "../components/loaders/TableLoader";
-
+import Axios from "axios";
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const Panier = (props) => {
+  const [basket, setBasket] = useState([]);
 
+  useEffect(() => {
+    Axios.get("http://127.0.0.1:8000/api/paniers").then((res) => {
+      setBasket(res.data["hydra:member"]);
+    });
+  }, []);
+  
+  const totalPrice = basket.reduce((total, item) => total + (item.prix_produit * item.quantite), 0);
 
   return (
     <>
       <div>
-      <h1>Panier</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Produit</th>
-          <th>Prix</th>
-          <th>Quantité</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Nom du produit</td>
-          <td>99.99 €</td>
-          <td>1</td>
-          <td>99.99 €</td>
-        </tr>
-        <tr>
-          <td>Nom du produit</td>
-          <td>49.99 €</td>
-          <td>2</td>
-          <td>99.98 €</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3">Total</td>
-          <td>199.97 €</td>
-        </tr>
-      </tfoot>
-    </table>
-    <a href="#">Continuer mes achats</a>
-    <button>Passer commande</button>
+        <h1>Panier</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Prix</th>
+              <th>Quantité</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {basket.map((data) => (
+              <tr key={data.id}>
+                <td>{data.nom_produit}</td>
+                <td>{data.prix_produit}€</td>
+                <td>{data.quantite}</td>
+                <td>{data.prix_produit * data.quantite}€</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Total Panier</td>
+              <td>{totalPrice}€</td>
+            </tr>
+          </tfoot>
+        </table>
+        <button className='btn btn-primary'><NavLink className="nav-link" to="/shop">Continuer les achats</NavLink></button>
+        <button className='btn btn-primary'>Passer commande</button>
       </div>
     </>
   );

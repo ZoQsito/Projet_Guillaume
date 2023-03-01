@@ -1,4 +1,4 @@
-img {
+#img {
     display: block;
     margin: 0 auto;
     border: 5px solid #fff;
@@ -10,14 +10,14 @@ img {
   }
   
   /* Style the h1 heading */
-  h1 {
+  #h1 {
     text-align: center;
     font-size: 2rem;
     margin-top: 1rem;
   }
   
   /* Style the paragraph */
-  p {
+  #p {
     text-align: center;
     font-size: 1.5rem;
     margin-top: 1rem;
