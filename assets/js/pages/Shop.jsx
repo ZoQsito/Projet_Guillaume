@@ -25,9 +25,24 @@ function ShopPage() {
       referenceProduit: reference,
     };
     console.log(cardInfo);
-
-    Axios.post('http://127.0.0.1:8000/api/paniers', cardInfo);
+    Axios.post("http://127.0.0.1:8000/api/paniers", cardInfo)
+  
   }
+
+  const handleDelete = async (id) => {
+    const originalProduct = [...products];
+
+    setProducts(products.filter((products) => products.id !== id));
+
+    try {
+      await Axios
+      .delete("http://127.0.0.1:8000/api/produits/" + id)
+      toast.success("Le Produit a bien été supprimé");
+    } catch (error) {
+      setProducts(originalProduct);
+      toast.error("La suppression du Produit n'a pas pu fonctionner");
+    }
+  };
 
   return (
     <div className="marketplace">
@@ -38,7 +53,8 @@ function ShopPage() {
             <img src={img} alt={product.nom} />
             <h2>{product.nom}</h2>
             <div className="price">${product.prix}</div>
-            <button onClick={() => handleBuyClick(product)}>Acheter</button>
+            <button id='button1' onClick={() => handleBuyClick(product)}>Acheter</button>
+            <button id='button2' onClick={() => handleDelete(product)}>Supprimer</button>
           </div>
         ))}
       </div>

@@ -24,6 +24,9 @@ class Produit
     #[ORM\Column(type: 'float')]
     private $prix;
 
+    #[ORM\Column(type: 'integer')]
+    private $quantite;
+
     #[ORM\Column(type: 'blob', nullable: true)]
     private $photo;
 
@@ -64,6 +67,18 @@ class Produit
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
 
         return $this;
     }

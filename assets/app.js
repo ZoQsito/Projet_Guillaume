@@ -15,6 +15,7 @@ import authAPI from "./js/services/authAPI";
 import "./styles/app.css";
 import Panier from "./js/pages/Panier";
 import Profil_Page from "./js/pages/Profil_page"
+import Stock from "./js/pages/Stock";
 
 authAPI.setup();
 
@@ -41,6 +42,7 @@ const App = () => {
             <PrivateRoute path="/profil" component={Profil_Page}/>
             <PrivateRoute path="/shop" component={ShopPage} />
             <PrivateRoute path="/panier" component={Panier} />
+            <PrivateRoute path="/Stock" component={Stock} />
             <Route path="/" component={HomePage} />
           </Switch>
         </main>

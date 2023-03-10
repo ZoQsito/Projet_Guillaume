@@ -1,15 +1,36 @@
-.div_logo{
-    text-align: center;
-    transition: transform .4s;
-}
-.div_logo:hover{
-    text-align: center;
-    -ms-transform: scale(1.02); /* IE 9 */
-  -webkit-transform: scale(1.02); /* Safari 3-8 */
-  transform: scale(1.02);
-  overflow: hidden;
-}
-
-.discover{
-   text-align: center; 
-}
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .logo-container {
+  margin-top: 50px;
+  }
+  
+  .discover-container {
+  margin-top: 50px;
+  text-align: center;
+  }
+  
+  .discover-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  }
+  
+  .discover-btn {
+  padding: 10px 20px;
+  background-color: #2a9d8f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  }
+  
+  .discover-btn:hover {
+  background-color: #21867a;
+  }

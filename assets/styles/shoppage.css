@@ -44,8 +44,20 @@ h1 {
   font-family: Montserrat,-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
-button {
+#button1 {
   background-color: #009688;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+#button2 {
+  background-color: #a02a06;
   color: #fff;
   border: none;
   padding: 10px 20px;

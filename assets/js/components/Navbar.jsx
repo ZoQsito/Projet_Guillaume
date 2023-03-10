@@ -33,6 +33,9 @@ const Navbar = ({history}) => {
           <li className="nav-item">
             <NavLink className="nav-link" to="/panier">Panier</NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/Stock">Stock</NavLink>
+          </li>
         </ul>
         <ul className="navbar-nav ml-auto">
           {!isAuthenticated &&( <><li className="nav-item"><NavLink to="/register" className="nav-link">Inscription</NavLink></li>
