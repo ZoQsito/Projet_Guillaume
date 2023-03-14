@@ -32,7 +32,7 @@ function Stock() {
   };
 
   return (
-    <div id="BudgetAdmin">
+    <div id="Stock">
         <div className="page-header align-items-start min-vh-50 pt- pb-10 m-3 border-radius-lg montserrat">
           <h1 className="text-align-center">Gérer la page Budget</h1>
 
@@ -40,32 +40,32 @@ function Stock() {
             <table className="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Nom</th>
-                  <th>Prix</th>
-                  <th>Référence</th>
-                  <th>Quantité</th>
-                  <th>Modification</th>
-                  <th>Suppression</th>
+                  <th className='center'>ID</th>
+                  <th className='center'>Nom</th>
+                  <th className='center'>Prix</th>
+                  <th className='center'>Référence</th>
+                  <th className='center'>Quantité</th>
+                  <th className='center'>Modification</th>
+                  <th className='center'>Suppression</th>
                 </tr>
               </thead>
 
               <tbody>
                 {products.map((data) => (
                   <tr key={data.id}>
-                    <td>{data.id}</td>
-                    <td>{data.nom}</td>
-                    <td>${data.prix}</td>
-                    <td>{data.reference}</td>
-                    <td>{data.quantite}</td>
-                    <td>
-                      <Link to={"/Stock/" + data.id}>
+                    <td className='center'>{data.id}</td>
+                    <td className='center'>{data.nom}</td>
+                    <td className='center'>${data.prix}</td>
+                    <td className='center'>{data.reference}</td>
+                    <td className='center'>{data.quantite}</td>
+                    <td className='center'>
+                      <Link to={"/Stocks/" + data.id}>
                         <button className="Add btn1 w-85 my-4 mb-2 montserrat">
                           +
                         </button>
                       </Link>
                     </td>
-                    <td>
+                    <td className='center'>
                       <button
                         onClick={() => handleDelete(data.id)}
                         className="Add btn1 w-85 my-4 mb-2 montserrat"
@@ -77,7 +77,7 @@ function Stock() {
                 ))}
               </tbody>
             </table>
-            <Link to="/Stock/new">
+            <Link to="/Stocks/new">
               <button className="Add btn1 w-85 my-4 mb-2 montserrat">
                 Créer un Produit
               </button>

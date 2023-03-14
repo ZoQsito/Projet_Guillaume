@@ -1,7 +1,8 @@
-#BudgetAdmin {
+#Stock {
     background-color: #f9f9f9;
     padding: 20px;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
   }
   
   .page-header {
@@ -22,8 +23,7 @@
     border-collapse: collapse;
   }
   
-  th,
-  td {
+  th{
     padding: 10px;
     text-align: left;
   }
@@ -70,4 +70,12 @@
   .my-4 {
     margin-top: 4px;
     margin-bottom: 4px;
+  }
+
+  .w-100{
+    width: 100%;
+  }
+
+  .center{
+    text-align: center;
   }
