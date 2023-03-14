@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -39,7 +40,16 @@ const Stocks = ({ match, history }) => {
       setEditing(true);
       fetchproduit(id);
     }
+    Axios.get("http://127.0.0.1:8000/api/produits/" + id).then((res) => {
+      setProducts({
+        nom : res.data.nom,
+        prix : res.data.prix,
+        reference : res.data.reference,
+        quantite: res.data.quantite,
+      });
+    })
   }, [id]);
+
 
   //Gestion des changements des inputs dans le formulaire
   const handleChange = ({ currentTarget }) => {
@@ -92,7 +102,7 @@ const Stocks = ({ match, history }) => {
         <form onSubmit={handleSubmit}>
           <div>
             <Field
-              name="Nom"
+              name="nom"
               label="Nom"
               placeholder="Nom"
               value={products.nom}
@@ -101,7 +111,7 @@ const Stocks = ({ match, history }) => {
             />
             &nbsp;
             <Field
-              name="Prix"
+              name="prix"
               label="Prix"
               placeholder="Prix"
               value={products.prix}
@@ -110,7 +120,7 @@ const Stocks = ({ match, history }) => {
             />
             &nbsp;
             <Field
-              name="Reference"
+              name="reference"
               label="Reference"
               placeholder="Référence du produit"
               value={products.reference}
@@ -119,7 +129,7 @@ const Stocks = ({ match, history }) => {
             />
             &nbsp;
             <Field
-              name="Qauntité"
+              name="quantité"
               label="Quantité"
               placeholder="Quantité"
               value={products.quantite}

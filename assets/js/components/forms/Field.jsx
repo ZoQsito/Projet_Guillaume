@@ -17,9 +17,8 @@ const Field = ({
       placeholder={placeholder || label}
       name={name}
       id={name}
-      className={"form-control" + (error && " is-invalid")}
+      className={"form-control"}
     />
-    {error && <p className="invalid-feedback">{error}</p>}
   </div>
 );
 

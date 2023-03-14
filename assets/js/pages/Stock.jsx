@@ -34,7 +34,7 @@ function Stock() {
   return (
     <div id="Stock">
         <div className="page-header align-items-start min-vh-50 pt- pb-10 m-3 border-radius-lg montserrat">
-          <h1 className="text-align-center">Gérer la page Budget</h1>
+          <h1 className="text-align-center">Gérer la page Shop</h1>
 
           <div className="table table-striped">
             <table className="table align-items-center mb-0">
