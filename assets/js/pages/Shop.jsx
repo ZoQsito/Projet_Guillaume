@@ -50,7 +50,7 @@ function ShopPage() {
           <div className="card" key={product.id}>
             <img src={img} alt={product.nom} />
             <h2>{product.nom}</h2>
-            <div className="price">${product.prix}</div>
+            <div className="price">{product.prix}€</div>
             <button id='button1' onClick={() => handleBuyClick(product)}>Acheter</button>
             <button id='button2' onClick={() => handleDelete(product)}>Supprimer</button>
           </div>

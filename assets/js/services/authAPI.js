@@ -6,6 +6,7 @@ function logout(){
     delete Axios.defaults.headers["Authorization"];
 }
 
+
 function authenticate(credentials){
      return Axios
         .post("http://localhost:8000/api/login_check", credentials)
@@ -57,10 +58,11 @@ function isAuthenticated(){
 }
 
 
+
 export default{
     authenticate,
     logout,
     setup,
-    isAuthenticated
+    isAuthenticated,
 }
 

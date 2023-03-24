@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import '../../styles/panier.css'
+import { toast } from "react-toastify";
 
 
 const Panier = (props) => {
@@ -12,6 +13,21 @@ const Panier = (props) => {
       setBasket(res.data["hydra:member"]);
     });
   }, []);
+
+  const handleDelete = async (id) => {
+    const originalProduct = [...basket];
+
+    setBasket(basket.filter((basket) => basket.id !== id));
+
+    try {
+      await Axios
+      .delete("http://127.0.0.1:8000/api/paniers/" + id)
+      toast.success("Le Produit a bien été supprimé");
+    } catch (error) {
+      setBasket(originalProduct);
+      toast.error("La suppression du Produit n'a pas pu fonctionner");
+    }
+  };
   
   const totalPrice = basket.reduce((total, item) => total + (item.prix_produit * item.quantite), 0);
 
@@ -26,6 +42,7 @@ const Panier = (props) => {
               <th>Prix</th>
               <th>Quantité</th>
               <th>Total</th>
+              <th>Supprimer</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +52,14 @@ const Panier = (props) => {
                 <td>{data.prix_produit}€</td>
                 <td>{data.quantite}</td>
                 <td>{data.prix_produit * data.quantite}€</td>
+                <td className='center'>
+                      <button
+                        onClick={() => handleDelete(data.id)}
+                        className="Add btn1 w-30"
+                      >
+                        -
+                      </button>
+                    </td>
               </tr>
             ))}
           </tbody>
