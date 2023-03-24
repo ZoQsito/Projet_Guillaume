@@ -39,8 +39,7 @@ const Stocks = ({ match, history }) => {
     if (id !== "new") {
       setEditing(true);
       fetchproduit(id);
-    }
-    Axios.get("http://127.0.0.1:8000/api/produits/" + id).then((res) => {
+      Axios.get("http://127.0.0.1:8000/api/produits/" + id).then((res) => {
       setProducts({
         nom : res.data.nom,
         prix : res.data.prix,
@@ -48,6 +47,7 @@ const Stocks = ({ match, history }) => {
         quantite: res.data.quantite,
       });
     })
+    }
   }, [id]);
 
 
@@ -67,16 +67,16 @@ const Stocks = ({ match, history }) => {
         products.prix = parseInt(products.prix);
         products.reference = parseInt(products.reference);
         products.quantite = parseInt(products.quantite);
-        console.log(products)
         await Axios.put("http://127.0.0.1:8000/api/produits/"+id, products)
         toast.success("Le Produit a bien été modifié");
+        history.replace("/Stock")
       } else {
         products.prix = parseInt(products.prix);
         products.reference = parseInt(products.reference);
         products.quantite = parseInt(products.quantite);
-        console.log(products)
-        await Axios.post("http://127.0.0.1:8000/api/produits/"+id, products)
+        await Axios.post("http://127.0.0.1:8000/api/produits", products)
         toast.success("Le Produit a bien été crée");
+        history.replace("/Stock")
       }
     } catch ({ response }) {
       const { violations } = response.data;
@@ -104,6 +104,7 @@ const Stocks = ({ match, history }) => {
             <Field
               name="nom"
               label="Nom"
+              type="text"
               placeholder="Nom"
               value={products.nom}
               onChange={handleChange}
@@ -114,6 +115,7 @@ const Stocks = ({ match, history }) => {
               name="prix"
               label="Prix"
               placeholder="Prix"
+              type="number"
               value={products.prix}
               onChange={handleChange}
               error={errors.prix}
@@ -122,6 +124,7 @@ const Stocks = ({ match, history }) => {
             <Field
               name="reference"
               label="Reference"
+              type="number"
               placeholder="Référence du produit"
               value={products.reference}
               onChange={handleChange}
@@ -129,8 +132,9 @@ const Stocks = ({ match, history }) => {
             />
             &nbsp;
             <Field
-              name="quantité"
-              label="Quantité"
+              name="quantite"
+              label="Quantite"
+              type="number"
               placeholder="Quantité"
               value={products.quantite}
               onChange={handleChange}

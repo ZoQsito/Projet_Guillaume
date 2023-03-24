@@ -6,7 +6,6 @@ const Field = ({
   onChange,
   placeholder = "",
   type = "text",
-  error = "",
 }) => (
   <div className="form-group">
     <label htmlFor={name}>{label}</label>&nbsp;

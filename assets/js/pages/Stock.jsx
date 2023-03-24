@@ -1,10 +1,11 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import "../../styles/Stock.css"
 
 
-function Stock() {
+const Stock = ({history}) => {
 
   const[products, setProducts] = useState([]);
 
@@ -14,7 +15,6 @@ function Stock() {
   })
   },[]);
   const img = 'https://placehold.it/300x200';
-  console.log(products)
 
   const handleDelete = async (id) => {
     const originalProduct = [...products];
@@ -55,7 +55,7 @@ function Stock() {
                   <tr key={data.id}>
                     <td className='center'>{data.id}</td>
                     <td className='center'>{data.nom}</td>
-                    <td className='center'>${data.prix}</td>
+                    <td className='center'>{data.prix}€</td>
                     <td className='center'>{data.reference}</td>
                     <td className='center'>{data.quantite}</td>
                     <td className='center'>

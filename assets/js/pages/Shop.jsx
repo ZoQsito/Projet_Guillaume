@@ -13,7 +13,6 @@ function ShopPage() {
   })
   },[]);
   const img = 'https://placehold.it/300x200';
-  console.log(products)
 
   function handleBuyClick(product) {
     const { id, nom , prix, reference} = product;
@@ -24,7 +23,6 @@ function ShopPage() {
       prixProduit: prix,
       referenceProduit: reference,
     };
-    console.log(cardInfo);
     Axios.post("http://127.0.0.1:8000/api/paniers", cardInfo)
   
   }

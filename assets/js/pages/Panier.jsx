@@ -40,7 +40,7 @@ const Panier = (props) => {
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="3">Total Panier</td>
+              <td colSpan="3">Total Panier</td>
               <td>{totalPrice}€</td>
             </tr>
           </tfoot>
