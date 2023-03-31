@@ -30,12 +30,13 @@ const App = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    var token = localStorage.getItem("authToken");
+  var token = localStorage.getItem("authToken");
 
-  var decodedToken = jwtDecode(token);
-
-  if(decodedToken.roles[0] === "ADMIN"){
-    setIsAdmin(true)
+  if (token) {
+    var decodedToken = jwtDecode(token);
+    if (decodedToken.roles[0] === "ADMIN") {
+      setIsAdmin(true);
+    }
   }
 
   },[isAuthenticated]);
@@ -77,8 +78,8 @@ const App = () => {
             <PrivateRoute path="/profil" component={Profil_Page} />
             <PrivateRoute path="/shop" component={ShopPage} />
             <PrivateRoute path="/panier" component={Panier} />
-            <PrivateRoute path="/Stock" component={Stock} />
-            <PrivateRoute
+            <AdminRoute path="/Stock" component={Stock} />
+            <AdminRoute
               path="/Stocks/:id"
               isAuthenticated={isAuthenticated}
               component={Stocks}

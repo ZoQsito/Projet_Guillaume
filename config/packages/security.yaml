@@ -45,16 +45,6 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
     - {
-        path: ^/api/customers,
-        roles: IS_AUTHENTICATED_FULLY,
-        methods: [GET, PUT, POST, DELETE],
-      }
-    - {
-        path: ^/api/invoices,
-        roles: IS_AUTHENTICATED_FULLY,
-        methods: [GET, PUT, POST, DELETE],
-      }
-    - {
         path: ^/api/users,
         roles: IS_AUTHENTICATED_FULLY,
         methods: [GET, PUT, POST, DELETE],

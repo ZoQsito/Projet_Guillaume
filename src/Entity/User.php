@@ -50,14 +50,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[assert\NotBlank(message:"Le prénom est obligatoire")]
     private $lastName;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Customer::class)]
-    private $customers;
-
-    public function __construct()
-    {
-        $this->customers = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -156,33 +148,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Customer>
-     */
-    public function getCustomers(): Collection
-    {
-        return $this->customers;
-    }
-
-    public function addCustomer(Customer $customer): self
-    {
-        if (!$this->customers->contains($customer)) {
-            $this->customers[] = $customer;
-            $customer->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomer(Customer $customer): self
-    {
-        if ($this->customers->removeElement($customer)) {
-            // set the owning side to null (unless already changed)
-            if ($customer->getUser() === $this) {
-                $customer->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }
