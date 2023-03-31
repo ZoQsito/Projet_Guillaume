@@ -10,16 +10,16 @@ const Stocks = ({ match, history }) => {
 
   const [products, setProducts] = useState({
     nom: "",
-    prix: 0,
-    reference: 0,
-    quantite: 0,
+    prix: "",
+    reference: "",
+    quantite: "",
   });
 
   const [errors, setErrors] = useState({
     nom: "",
-    prix: 0,
-    reference: 0,
-    quantite: 0,
+    prix: "",
+    reference: "",
+    quantite: "",
   });
 
   const [editing, setEditing] = useState(false);
