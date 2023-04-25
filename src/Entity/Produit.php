@@ -30,6 +30,7 @@ class Produit
     #[ORM\Column(type: 'string', nullable: true)]
     private $photo;
 
+
     public function getId(): ?int
     {
         return $this->id;

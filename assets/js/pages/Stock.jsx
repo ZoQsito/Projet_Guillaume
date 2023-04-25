@@ -14,7 +14,6 @@ const Stock = ({history}) => {
       setProducts(res.data["hydra:member"]);
   })
   },[]);
-  const img = 'https://placehold.it/300x200';
 
   const handleDelete = async (id) => {
     const originalProduct = [...products];

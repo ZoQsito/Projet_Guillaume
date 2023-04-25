@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import "../../styles/shoppage.css"
 
 
@@ -30,6 +31,8 @@ function ShopPage() {
       quantite : quantite - 1,
     }
     Axios.put("http://127.0.0.1:8000/api/produits/" + id, stockupdate)
+
+    toast.success("Le Produit a bien été ajouté au panier");
   
   }
 
